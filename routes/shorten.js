@@ -9,7 +9,7 @@ const repository = require('../util/repository');
 /* POST custom URL shortening */
 router.post('/custom/:url/:hash', asyncHandler( async function(req, res, next) {
   let result = await repository.addNewUrl(req.params.url, req.params.hash);
-  res.send('respond with a resource');
+  res.send('https://uehl.in/' + req.params.hash);
 }));
 
 /* POST random URL shortening */
@@ -17,7 +17,7 @@ router.post('/random/:url', asyncHandler( async function(req, res, next) {
   let id = shortid.generate();
   let result = await repository.addNewUrl(req.params.url, id);
   console.log(req.params.url, id);
-  res.send('respond with a resource');
+  res.send('https://uehl.in/' + id);
 }));
 
 /* DELETE shortened URL  */
