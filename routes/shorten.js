@@ -1,12 +1,23 @@
 var express = require('express');
+const asyncHandler = require('express-async-handler');
+const shortid = require('shortid');
+
 var router = express.Router();
 
 const repository = require('../util/repository');
 
-/* POST vanity URL shortening */
-router.post('/:url/:hash', function(req, res, next) {
-  repository.addNewUrl(req.params.url, req.params.hash);
+/* POST custom URL shortening */
+router.post('/custom/:url/:hash', asyncHandler( async function(req, res, next) {
+  let result = await repository.addNewUrl(req.params.url, req.params.hash);
   res.send('respond with a resource');
-});
+}));
+
+/* POST random URL shortening */
+router.post('/random/:url', asyncHandler( async function(req, res, next) {
+  let id = shortid.generate();
+  let result = await repository.addNewUrl(req.params.url, id);
+  console.log(req.params.url, id);
+  res.send('respond with a resource');
+}));
 
 module.exports = router;

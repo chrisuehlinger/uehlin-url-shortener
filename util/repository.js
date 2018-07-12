@@ -6,7 +6,7 @@ module.exports = {
         };
         return await Promise.resolve();
     },
-    getUrl: asynx function(hash){
+    getUrl: async function(hash){
         return await Promise.resolve(this._db[hash]);
     }
 };
