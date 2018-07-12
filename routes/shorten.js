@@ -1,10 +1,19 @@
 var express = require('express');
+const createError = require('http-errors');
 const asyncHandler = require('express-async-handler');
 const shortid = require('shortid');
 
 var router = express.Router();
 
 const repository = require('../util/repository');
+
+router.use((req, res, next) => {
+  if (req.headers['x-apikey'] !== process.env.API_KEY) {
+    next(createError(403));
+  } else {
+    next();
+  }
+});
 
 /* POST custom URL shortening */
 router.post('/custom/:url/:hash', asyncHandler( async function(req, res, next) {

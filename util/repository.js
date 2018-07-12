@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Connect to mongo
-mongoose.connect('mongodb://localhost/uehlin');
+mongoose.connect(`mongodb://localhost:27017/uehlin`, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
