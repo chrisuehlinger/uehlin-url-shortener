@@ -20,4 +20,10 @@ router.post('/random/:url', asyncHandler( async function(req, res, next) {
   res.send('respond with a resource');
 }));
 
+/* DELETE shortened URL  */
+router.delete('/:hash', asyncHandler( async function(req, res, next) {
+  let result = await repository.removeUrl(req.params.hash);
+  res.send('respond with a resource');
+}));
+
 module.exports = router;

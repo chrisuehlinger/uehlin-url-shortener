@@ -8,5 +8,9 @@ module.exports = {
     },
     getUrl: async function(hash){
         return await Promise.resolve(this._db[hash]);
+    },
+    removeUrl: async function(hash){
+        this._db[hash] = undefined;
+        return await Promise.resolve();
     }
 };
