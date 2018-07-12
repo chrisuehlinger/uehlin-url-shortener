@@ -7,6 +7,9 @@ module.exports = {
         return await Promise.resolve();
     },
     getUrl: async function(hash){
+        if(!this._db[hash]){
+            return await Promise.reject();
+        }
         return await Promise.resolve(this._db[hash]);
     },
     removeUrl: async function(hash){
