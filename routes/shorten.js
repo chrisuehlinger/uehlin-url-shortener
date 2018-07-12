@@ -16,7 +16,6 @@ router.post('/custom/:url/:hash', asyncHandler( async function(req, res, next) {
 router.post('/random/:url', asyncHandler( async function(req, res, next) {
   let id = shortid.generate();
   let result = await repository.addNewUrl(req.params.url, id);
-  console.log(req.params.url, id);
   res.send('https://uehl.in/' + id);
 }));
 
