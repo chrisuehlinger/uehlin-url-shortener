@@ -8,6 +8,8 @@ services:
       - "443:443"
     environment:
       - CERTBOT_EMAIL=chris.uehlinger@gmail.com
+    links:
+      - web
   web:
     build: .
     ports:
