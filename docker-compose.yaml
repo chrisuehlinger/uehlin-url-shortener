@@ -10,8 +10,6 @@ services:
       - CERTBOT_EMAIL=chris.uehlinger@gmail.com
   web:
     build: .
-    volumes:
-      - ./:/app
     ports:
       - "3000:3000"
     links:
