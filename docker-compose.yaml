@@ -1,6 +1,13 @@
 # Inspired from https://medium.com/@sunnykay/docker-development-workflow-node-express-mongo-4bb3b1f7eb1e
 version: "2"
 services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - CERTBOT_EMAIL=chris.uehlinger@gmail.com
   web:
     build: .
     volumes:
